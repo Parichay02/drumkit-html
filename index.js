@@ -6,10 +6,12 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
 buttonhtml=this.innerHTML;
 makesound(buttonhtml);
+        buttonAnimation(buttonhtml);
     });
 }
     document.addEventListener("keypress",function(event){
         makesound(event.key) ;
+        buttonAnimation(event.key);
     });
 
 
@@ -83,6 +85,14 @@ function makesound(key)
         default:
             break;
     }}
+
+function buttonAnimation(currkey){
+    var activeBtn=document.querySelector("."+currkey);
+    activeBtn.classList.add("pressed");
+    setTimeout(function(){
+        activeBtn.classList.remove("pressed");
+    },100);
+}
     
 
   
